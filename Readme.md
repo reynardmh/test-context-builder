@@ -14,7 +14,7 @@ TestContext.define('base', () => {
   ctx.user = { id: 1, name: 'Bob', bankId: ctx.bank.id };
   ctx.userAccount1 = { id: 1, name: 'Checking', userId: ctx.user.id };
   ctx.userAccount2 = { id: 2, name: 'Saving', userId: ctx.user.id };
-  return Promise.props(ctx);
+  return ctx;
 });
 
 describe('transfer money to same user', function() {
@@ -39,7 +39,7 @@ TestContext.define('user2', ['base'], (globalCtx) => {
   ctx.user2 = { id: 2, name: 'Bob', bankId: globalCtx.bank.id };
   ctx.user2Account1 = { id: 3, name: 'Checking', userId: ctx.user2.id };
   ctx.user2Account2 = { id: 4, name: 'Saving', userId: ctx.user2.id };
-  return Promise.props(ctx);
+  return ctx;
 });
 ```
 
@@ -75,7 +75,7 @@ TestContext.define('base', () => {
   let ctx = {};
   ctx.bank = Fabricator.fabricate('bank');
   ctx.user = Fabricator.fabricate('user', { bankId: ctx.bank.then(b => b.bankId) });
-  return Promise.props(ctx);
+  return ctx;
 });
 
 ```

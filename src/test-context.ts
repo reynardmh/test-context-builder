@@ -1,6 +1,6 @@
 import * as Promise from 'bluebird';
 
-export type TestContextDefineFn = (context?: any) => Promise<any>;
+export type TestContextDefineFn = (context?: any) => any;
 
 export class TestContext {
 
@@ -47,7 +47,7 @@ export class TestContext {
           if (this.loadedContext.has(name)) {
             return Promise.resolve(this.context);
           } else {
-            return sharedCtx.fn(this.context).then((newContext) => {
+            return Promise.props(sharedCtx.fn(this.context)).then((newContext) => {
               this.loadedContext.add(name);
               this.mergeContext(newContext);
               return this.context;

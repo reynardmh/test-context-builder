@@ -1,6 +1,6 @@
 /// <reference types="bluebird" />
 import * as Promise from 'bluebird';
-export declare type TestContextDefineFn = (context?: any) => Promise<any>;
+export declare type TestContextDefineFn = (context?: any) => any;
 export declare class TestContext {
     context: {};
     static sharedContexts: any;

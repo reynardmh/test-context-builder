@@ -15,35 +15,35 @@ TestContext.define('base', () => {
   let curCtx: any = {};
   curCtx.org = { id: randId(), name: 'org' };
   curCtx.dept = { id: randId(), name: 'IT', orgId: curCtx.org.id };
-  return Promise.props(curCtx);
+  return curCtx;
 });
 
 TestContext.define('conflict-with-base', () => {
-  return Promise.props({ org: {} });
+  return { org: {} };
 });
 
 TestContext.define('dept2', ['base'], (context) => {
-  return Promise.props({
+  return {
     dept2: { id: randId(), name: 'HR', orgId: context.org.id }
-  });
+  };
 });
 
 TestContext.define('user', (context) => {
-  return Promise.props({
+  return {
     user: { id: randId(), name: 'bob', deptId: context.dept.id }
-  });
+  };
 });
 
 TestContext.define('user-with-dependency', ['base'], (context) => {
-  let curCtx: any = {};
-  curCtx.user = { id: randId(), name: 'bob', deptId: context.dept.id };
-  return Promise.props(curCtx);
+  return {
+    user: { id: randId(), name: 'bob', deptId: context.dept.id }
+  };
 });
 
 TestContext.define('user2', ['base', 'dept2'], (context) => {
-  let curCtx: any = {};
-  curCtx.user2 = { id: randId(), name: 'Jane', deptId: context.dept2.id };
-  return Promise.props(curCtx);
+  return {
+    user2: { id: randId(), name: 'Jane', deptId: context.dept2.id }
+  };
 });
 
 describe('TestContext', () => {

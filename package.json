@@ -1,6 +1,6 @@
 {
   "name": "test-context-builder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Test context builder",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,10 @@
   },
   "author": "Reynard Hilman",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reynardmh/test-context-builder"
+  },
   "dependencies": {
     "bluebird": "^3.5.0"
   },

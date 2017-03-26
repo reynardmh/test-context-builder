@@ -48,7 +48,7 @@ var TestContext = (function () {
                         return Promise.resolve(_this.context);
                     }
                     else {
-                        return sharedCtx_1.fn(_this.context).then(function (newContext) {
+                        return Promise.props(sharedCtx_1.fn(_this.context)).then(function (newContext) {
                             _this.loadedContext.add(name);
                             _this.mergeContext(newContext);
                             return _this.context;
